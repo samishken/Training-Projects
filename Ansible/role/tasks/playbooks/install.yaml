@@ -1,0 +1,14 @@
+---
+# List of Tasks - 3 tasks
+# on which hosts? which target nodes - host group
+
+- hosts: dev
+  tasks:
+  - name: Install httpd 
+    yum: 
+      name: "{{ package_name }}"
+      state: installed
+  - name: Start httpd 
+    service:
+      name: "{{ package_name }}"
+      state: started

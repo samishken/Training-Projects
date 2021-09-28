@@ -1,0 +1,22 @@
+---
+# List of Tasks - 3 tasks
+# on which hosts? which target nodes - host group
+
+- hosts: dev
+  tasks:
+  - include: install.yaml
+  - include: copyfile.yaml
+
+  - name: Install httpd 
+    yum: 
+      name: 
+      state: installed
+  - name: Start httpd 
+    service:
+      name: httpd
+      state: started
+  - name: copy index.html file
+    become: yes
+    copy: 
+      src: /home/ec2-user/index.html
+      dest: /var/www/html/index.html
